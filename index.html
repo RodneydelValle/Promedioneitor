@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Promedios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 100%;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Promedios</h2>
+
+        <!-- Casillas para ingresar notas -->
+        <label for="nota60">Ingresa tu nota para el 60%:</label>
+        <input type="number" id="nota60" step="0.01" placeholder="Nota del 60%">
+
+        <label for="nota40">Ingresa tu nota para el 40%:</label>
+        <input type="number" id="nota40" step="0.01" placeholder="Nota del 40%">
+
+        <button onclick="calcularTotal()">Calcular Total</button>
+
+        <div class="result">
+            <p id="resultadoTotal"></p>
+        </div>
+
+        <!-- Sección para calcular el mínimo necesario en el 40% -->
+        <h3>Calcular nota mínima necesaria</h3>
+        <label for="notaObjetivo">Nota objetivo:</label>
+        <input type="number" id="notaObjetivo" step="0.01" placeholder="Nota que deseas alcanzar">
+        
+        <label for="nota60_minimo">Nota obtenida en el 60%:</label>
+        <input type="number" id="nota60_minimo" step="0.01" placeholder="Ingresa tu nota del 60%">
+        
+        <button onclick="calcularMinimo()">Calcular mínimo en 40%</button>
+        
+        <div class="result">
+            <p id="resultadoMinimo"></p>
+        </div>
+    </div>
+
+    <script>
+        // Función para calcular el total sumando el 60% y el 40%
+        function calcularTotal() {
+            const nota60 = parseFloat(document.getElementById('nota60').value);
+            const nota40 = parseFloat(document.getElementById('nota40').value);
+
+            if (!isNaN(nota60) && !isNaN(nota40)) {
+                const total60 = nota60 * 0.6;
+                const total40 = nota40 * 0.4;
+                const total = total60 + total40;
+                document.getElementById('resultadoTotal').innerText = 
+                    `60% de ${nota60} = ${total60.toFixed(2)}, 40% de ${nota40} = ${total40.toFixed(2)}. Total: ${total.toFixed(2)}`;
+            } else {
+                document.getElementById('resultadoTotal').innerText = 'Por favor, ingresa notas válidas en ambos campos.';
+            }
+        }
+
+        // Función para calcular el mínimo necesario en el 40% para alcanzar una nota objetivo
+        function calcularMinimo() {
+            const notaObjetivo = parseFloat(document.getElementById('notaObjetivo').value);
+            const nota60 = parseFloat(document.getElementById('nota60_minimo').value);
+
+            if (!isNaN(notaObjetivo) && !isNaN(nota60)) {
+                const minimo40 = (notaObjetivo - (nota60 * 0.6)) / 0.4;
+                document.getElementById('resultadoMinimo').innerText = 
+                    `Necesitas al menos un ${minimo40.toFixed(2)} en el 40% para alcanzar una nota de ${notaObjetivo}.`;
+            } else {
+                document.getElementById('resultadoMinimo').innerText = 'Por favor, ingresa valores válidos.';
+            }
+        }
+    </script>
+</body>
+</html>
