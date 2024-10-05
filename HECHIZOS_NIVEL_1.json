@@ -1,0 +1,13 @@
+{
+  "hechizos": [
+    {
+      "nombre": "Proyectil Mágico",
+      "nivel": 1,
+      "tipo": "evocación",
+      "daño": "1d4 + 1",
+      "alcance": "120 pies (24 casillas, 36 m)",
+      "duración": "Instantánea",
+      "descripcion": "Creas tres dardos brillantes de fuerza mágica. Cada dardo impacta a una criatura de tu elección que puedas ver dentro del alcance. Un dardo inflige 1d4 + 1 puntos de daño por fuerza a su objetivo. Todos los dardos impactan a la vez, y los puedes dirigir para que impacten a una criatura o a varias. Cuando lanzas este hechizo usando un espacio de conjuros de nivel 2 o superior, el conjuro crea un dardo más por cada nivel de espacio de conjuros por encima de nivel 1."
+    }
+  ]
+}
